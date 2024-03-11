@@ -1,0 +1,646 @@
+{
+  "stats": {
+    "suites": 15,
+    "tests": 15,
+    "passes": 15,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-11-15T02:09:38.080Z",
+    "end": "2023-11-15T02:09:38.252Z",
+    "duration": 172,
+    "testsRegistered": 15,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5671a157-5893-49b9-8b1d-62f7632b6daf",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "295fab64-c927-4370-ae1f-b19a21532c54",
+          "title": "API Routes",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\index.test.js",
+          "file": "\\test\\index.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should respond with \"hi\" for GET /",
+              "fullTitle": "API Routes should respond with \"hi\" for GET /",
+              "timedOut": false,
+              "duration": 18,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "chai.request(app)\n  .get('/')\n  .end((err, res) => {\n    expect(res).to.have.status(200);\n    expect(res.text).to.equal('Hello mern stack');\n    done();\n  });",
+              "err": {},
+              "uuid": "96bb7756-5b2a-4724-b836-dedc24769f3d",
+              "parentUUID": "295fab64-c927-4370-ae1f-b19a21532c54",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "96bb7756-5b2a-4724-b836-dedc24769f3d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 18,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "059af6c5-7e19-44d7-9e54-972442593a34",
+          "title": "GET /getHistory",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\product.test.js",
+          "file": "\\test\\product.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should get the user history",
+              "fullTitle": "GET /getHistory should get the user history",
+              "timedOut": false,
+              "duration": 14,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const userId = 'user_id';\nconst userHistory = [\n{ action: 'Action 1', date: new Date() },\n{ action: 'Action 2', date: new Date() },\n];\nconst docs = {\n  history: userHistory,\n};\n// Stub User.findOne to simulate retrieving user history\nconst findOneStub = sinon.stub(User, 'findOne');\nfindOneStub.callsFake((query, callback) => {\n  callback(null, docs);\n});\nchai.request(app)\n  .get('/api/users/getHistory')\n  .end((err, res) => {\n    if (err) return done(err);\n    expect(res).to.have.status(500);\n    findOneStub.restore();\n    done();\n  });",
+              "err": {},
+              "uuid": "fad3e30d-4834-4ca9-b455-cc581aa41e62",
+              "parentUUID": "059af6c5-7e19-44d7-9e54-972442593a34",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "fad3e30d-4834-4ca9-b455-cc581aa41e62"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 14,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "ae27a693-b353-4399-be3d-4c551976e722",
+          "title": "POST /uploadProduct",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\product.test.js",
+          "file": "\\test\\product.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should upload a product",
+              "fullTitle": "POST /uploadProduct should upload a product",
+              "timedOut": false,
+              "duration": 24,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const productData = {\n  // Replace with the product data you want to upload\n  name: 'Product Name',\n  price: 100,\n  description: 'Product Description',\n};\n// Stub Product.save to simulate saving a product\nconst saveStub = sinon.stub(Product.prototype, 'save');\nsaveStub.callsFake(function (callback) {\n  // Simulate saving the product\n  callback(null);\n});\nchai.request(app)\n  .post('/api/product/uploadProduct')\n  .set('x-auth', 'user_token') // Set the user token\n  .send(productData)\n  .end((err, res) => {\n    if (err) return done(err);\n    expect(res).to.have.status(200);\n    expect(res.body).to.have.property('success', true);\n    saveStub.restore();\n    done();\n  });",
+              "err": {},
+              "uuid": "aca3b2da-3146-4dff-830a-7ecc60d89156",
+              "parentUUID": "ae27a693-b353-4399-be3d-4c551976e722",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "aca3b2da-3146-4dff-830a-7ecc60d89156"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 24,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "9acf6ea0-ad4b-4d65-85b3-2661ca21bbba",
+          "title": "POST /getProducts",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\product.test.js",
+          "file": "\\test\\product.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should retrieve products",
+              "fullTitle": "POST /getProducts should retrieve products",
+              "timedOut": false,
+              "duration": 6,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const term = 'search_term'; // Replace with the search term you want to use\n// Stub Product.find to simulate finding products\nconst findStub = sinon.stub(Product, 'find');\nfindStub.callsFake(function (query, callback) {\n  // Simulate finding products\n  callback(null, [{ name: 'Product 1' }, { name: 'Product 2' }]);\n});\nchai.request(app)\n  .post('/api/product/getProducts')\n  .set('x-auth', 'user_token') // Set the user token\n  .send({ term })\n  .end((err, res) => {\n    if (err) return done(err);\n    expect(res).to.have.status(200);\n    expect(res.body).to.have.property('success', true);\n    expect(res.body).to.have.property('products');\n    expect(res.body.products).to.be.an('array');\n    findStub.restore();\n    done();\n  });",
+              "err": {},
+              "uuid": "78b04b82-4abf-4f48-9ef3-0adbdd993bca",
+              "parentUUID": "9acf6ea0-ad4b-4d65-85b3-2661ca21bbba",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "78b04b82-4abf-4f48-9ef3-0adbdd993bca"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "7025a6d5-c90b-411a-b3bf-2728256c6998",
+          "title": "POST /getDetail",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\product.test.js",
+          "file": "\\test\\product.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should retrieve product details",
+              "fullTitle": "POST /getDetail should retrieve product details",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const productId = 'product_id'; // Replace with the product ID you want to use for testing\n// Stub Product.find to simulate finding the product\nconst findStub = sinon.stub(Product, 'find');\nfindStub.callsFake(function (query, callback) {\n  // Simulate finding the product\n  callback(null, [{ _id: 'product_id', name: 'Product 1', description: 'Product description' }]);\n});\nchai.request(app)\n  .post('/api/product/getDetail')\n  .set('x-auth', 'user_token') // Set the user token\n  .send({ id: productId })\n  .end((err, res) => {\n    if (err) return done(err);\n    expect(res).to.have.status(200);\n  \n    findStub.restore();\n    done();\n  });",
+              "err": {},
+              "uuid": "80bfe747-65a4-441f-82c9-400826d47320",
+              "parentUUID": "7025a6d5-c90b-411a-b3bf-2728256c6998",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "80bfe747-65a4-441f-82c9-400826d47320"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "54813754-ff80-4da1-adaf-e383dc42e254",
+          "title": "POST /getCartDetails",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\product.test.js",
+          "file": "\\test\\product.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should retrieve cart details",
+              "fullTitle": "POST /getCartDetails should retrieve cart details",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const productIds = ['product_id_1', 'product_id_2']; // Replace with the product IDs you want to use for testing\n// Stub Product.find to simulate finding the products\nconst findStub = sinon.stub(Product, 'find');\nfindStub.callsFake(function (query, callback) {\n  // Simulate finding the products\n  callback(null, [\n    { _id: 'product_id_1', name: 'Product 1', description: 'Product 1 description' },\n    { _id: 'product_id_2', name: 'Product 2', description: 'Product 2 description' }\n  ]);\n});\nchai.request(app)\n  .post('/api/product/getCartDetails')\n  .set('x-auth', 'user_token') // Set the user token\n  .send({ array: productIds })\n  .end((err, res) => {\n    if (err) return done(err);\n    expect(res).to.have.status(200);\n    findStub.restore();\n    done();\n  });",
+              "err": {},
+              "uuid": "c12e7ab6-8157-41ee-94ea-8a4d657eccc4",
+              "parentUUID": "54813754-ff80-4da1-adaf-e383dc42e254",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c12e7ab6-8157-41ee-94ea-8a4d657eccc4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "0f46fc05-2255-4af5-9a73-9df1f8a37b69",
+          "title": "GET /",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\users.test.js",
+          "file": "\\test\\users.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should respond with \"hi\" for GET /",
+              "fullTitle": "GET / should respond with \"hi\" for GET /",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "chai.request(app)\n  .get('/api/users/')\n  .end((err, res) => {\n    expect(res).to.have.status(200);\n    expect(res.text).to.equal('hi');\n    done();\n  });",
+              "err": {},
+              "uuid": "7fb85039-5597-4311-9c2c-82cd878ee568",
+              "parentUUID": "0f46fc05-2255-4af5-9a73-9df1f8a37b69",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7fb85039-5597-4311-9c2c-82cd878ee568"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "248c73fe-0700-43c4-ab7b-e67a2ca0a192",
+          "title": "GET /auth",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\users.test.js",
+          "file": "\\test\\users.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return user information for GET /auth",
+              "fullTitle": "GET /auth should return user information for GET /auth",
+              "timedOut": false,
+              "duration": 3,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "chai.request(app)\n  .get('/api/users/auth')\n  .end((err, res) => {\n    expect(res).to.have.status(200);\n    expect(res.body).to.have.property('_id');\n    expect(res.body).to.have.property('isAdmin');\n    expect(res.body).to.have.property('isAuth');\n    done();\n  });",
+              "err": {},
+              "uuid": "d7b1577d-c3b5-4cc8-8228-5d2caa4a6afb",
+              "parentUUID": "248c73fe-0700-43c4-ab7b-e67a2ca0a192",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d7b1577d-c3b5-4cc8-8228-5d2caa4a6afb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "d5904052-eae9-4d27-b73c-fc7322b7467a",
+          "title": "POST /register",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\users.test.js",
+          "file": "\\test\\users.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should register a new user and return registerSuccess:true",
+              "fullTitle": "POST /register should register a new user and return registerSuccess:true",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const newUser = {\n  email: 'newuser@example.com',\n  password: 'password123',\n};\n  \nconst saveStub = sinon.stub(User.prototype, 'save');\nsaveStub.callsFake(function (callback) {\n  callback(null, this);\n});\n  \nchai.request(app)\n  .post('/api/users/register')\n  .send(newUser)\n  .end((err, res) => {\n    if (err) return done(err);\n  \n    expect(res).to.have.status(200);\n    expect(res.body).to.have.property('registerSuccess', true);\n  \n    saveStub.restore();\n  \n    done();\n  });",
+              "err": {},
+              "uuid": "0d1e4f24-8675-4e8b-b41d-01d5d166b83b",
+              "parentUUID": "d5904052-eae9-4d27-b73c-fc7322b7467a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0d1e4f24-8675-4e8b-b41d-01d5d166b83b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "d687cfc4-d029-4c69-ac31-3293f9f4b39b",
+          "title": "POST /login",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\users.test.js",
+          "file": "\\test\\users.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should log in a user and return loginSuccess:true",
+              "fullTitle": "POST /login should log in a user and return loginSuccess:true",
+              "timedOut": false,
+              "duration": 6,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const user = {\n  email: 'user@example.com',\n  password: 'password123',\n};\n  \n// Stub User.findOne to simulate finding a user with correct credentials\nconst findOneStub = sinon.stub(User, 'findOne');\nfindOneStub.callsFake((query, callback) => {\n  callback(null, user);\n});\nconst isMatch = true;\n// Stub user.comparePassword to simulate a successful password match\nconst comparePasswordStub = sinon.stub(User.prototype, 'comparePassword');\ncomparePasswordStub.callsFake((password, callback) => {\n  callback(null, isMatch);\n});\n  \n// Stub user.generateToken to simulate token generation\nconst generateTokenStub = sinon.stub(User.prototype, 'generateToken');\ngenerateTokenStub.callsFake((callback) => {\n  callback(null, user);\n});\n  \nchai.request(app)\n  .post('/api/users/login')\n  .send(user)\n  .end((err, res) => {\n    if (err) return done(err);\n  \n    expect(res).to.have.status(500);\n    findOneStub.restore()\n    comparePasswordStub.restore()\n    done();\n  });",
+              "err": {},
+              "uuid": "4aa441fe-fa95-468f-9098-0e5a0f3d2bbb",
+              "parentUUID": "d687cfc4-d029-4c69-ac31-3293f9f4b39b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4aa441fe-fa95-468f-9098-0e5a0f3d2bbb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "f1dab8f4-2d4d-4fef-9df4-d39e31e00b29",
+          "title": "GET /logout",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\users.test.js",
+          "file": "\\test\\users.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should log out a user and return logoutSuccess:true",
+              "fullTitle": "GET /logout should log out a user and return logoutSuccess:true",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const user = {\n  _id: 'user_id',\n};\n  \n// Stub User.findOneAndUpdate to simulate clearing the user's token\nconst findOneAndUpdateStub = sinon.stub(User, 'findOneAndUpdate');\nfindOneAndUpdateStub.callsFake((query, update, callback) => {\n  callback(null, user);\n});\n  \nchai.request(app)\n  .get('/api/users/logout')\n  .end((err, res) => {\n    if (err) return done(err);\n  \n    expect(res).to.have.status(200);\n    expect(res.body).to.have.property('logoutSuccess', true);\n  \n    findOneAndUpdateStub.restore();\n  \n    done();\n  });",
+              "err": {},
+              "uuid": "a2f41b0e-2169-476c-af9a-f397ae7911af",
+              "parentUUID": "f1dab8f4-2d4d-4fef-9df4-d39e31e00b29",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a2f41b0e-2169-476c-af9a-f397ae7911af"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "1a97e786-a058-4861-835c-d15fc91995c0",
+          "title": "POST /addToCart",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\users.test.js",
+          "file": "\\test\\users.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add a product to the user cart and return the updated cart",
+              "fullTitle": "POST /addToCart should add a product to the user cart and return the updated cart",
+              "timedOut": false,
+              "duration": 6,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const userId = 'your-user-id';\nconst productId = '1';\nconst user = {\n  _id: userId,\n  cart: [],\n};\n// Stub User.findOne to simulate retrieving the user's information\nconst findOneStub = sinon.stub(User, 'findOne');\nfindOneStub.callsFake((query, callback) => {\n  // Simulate a user with an empty cart\n \n  callback(null, user);\n});\n  \n// Stub User.findOneAndUpdate to simulate updating the user's cart\nconst findOneAndUpdateStub = sinon.stub(User, 'findOneAndUpdate');\nfindOneAndUpdateStub.callsFake((query, update, options, callback) => {\n  // Simulate updating the cart\n  const updatedUser = {\n    _id: userId,\n    cart: [\n      {\n        id: productId,\n        quantity: 1,\n        date: Date.now(),\n      },\n    ],\n  };\n  callback(null, updatedUser);\n});\n  \nchai.request(app)\n  .post('/api/users/addToCart')\n  .set('x-auth', 'user_token') // Set the user token\n  .send({ productId: productId })\n  .end((err, res) => {\n    if (err) return done(err);\n  \n    expect(res).to.have.status(200);\n    expect(res.body).to.have.property('success', true);\n    expect(res.body).to.have.property('cart').to.be.an('array').to.have.lengthOf(1);\n  \n    findOneStub.restore();\n    findOneAndUpdateStub.restore();\n  \n    done();\n  });",
+              "err": {},
+              "uuid": "ea330f85-86a2-4cd8-bed7-d7ab0de966e1",
+              "parentUUID": "1a97e786-a058-4861-835c-d15fc91995c0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ea330f85-86a2-4cd8-bed7-d7ab0de966e1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "896934a5-0608-471e-b071-f9221e5b97b5",
+          "title": "POST /removeCartItem",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\users.test.js",
+          "file": "\\test\\users.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should remove a product from the user cart and return updated cart details",
+              "fullTitle": "POST /removeCartItem should remove a product from the user cart and return updated cart details",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const userId = 'your-user-id';\nconst itemId = 'item_id';\nconst productIds = ['product_id1', 'product_id2']; // Replace with actual product IDs\n  \n// Stub User.findOneAndUpdate to simulate removing an item from the cart\nconst findOneAndUpdateStub = sinon.stub(User, 'findOneAndUpdate');\nfindOneAndUpdateStub.callsFake((query, update, options, callback) => {\n  // Simulate removing the item from the cart\n  const userInfo = {\n    _id: userId,\n    cart: [\n      {\n        id: productIds[0],\n        quantity: 1,\n        date: Date.now(),\n      },\n      {\n        id: productIds[1],\n        quantity: 2,\n        date: Date.now(),\n      },\n    ],\n  };\n  callback(null, userInfo );\n});\n  \n// Stub Product.find to simulate retrieving cart product details\nconst findStub = sinon.stub(Product, 'find');\nfindStub.callsFake((query, callback) => {\n  // Simulate retrieving product details\n  const cartDetails = [\n    {\n      _id: productIds[0],\n      // Add product details here\n    },\n    {\n      _id: productIds[1],\n      // Add product details here\n    },\n  ];\n  callback(null, cartDetails);\n});\n  \nchai.request(app)\n  .post('/api/users/removeCartItem')\n  .set('x-auth', 'user_token') // Set the user token\n  .send({ id: itemId })\n  .end((err, res) => {\n    if (err) return done(err);\n  \n    expect(res).to.have.status(500);\n    findOneAndUpdateStub.restore();\n    findStub.restore();\n  \n    done();\n  });",
+              "err": {},
+              "uuid": "de46beab-3f8b-4b7e-89af-7bbeccd7dc45",
+              "parentUUID": "896934a5-0608-471e-b071-f9221e5b97b5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "de46beab-3f8b-4b7e-89af-7bbeccd7dc45"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "39a57e96-d198-4564-8ff5-baa0224b1755",
+          "title": "GET /getOrders",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\users.test.js",
+          "file": "\\test\\users.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should get the list of orders",
+              "fullTitle": "GET /getOrders should get the list of orders",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const orders = [\n  // Replace with actual order data\n  { orderId: 'order1', amount: 100 },\n  { orderId: 'order2', amount: 200 },\n];\n  \n// Stub Payment.find to simulate retrieving orders\nconst findStub = sinon.stub(Payment, 'find');\nfindStub.callsFake((query, callback) => {\n  // Simulate retrieving orders\n  callback(null, orders);\n});\n  \nchai.request(app)\n  .get('/api/users/getOrders')\n  .set('x-auth', 'user_token') // Set the user token\n  .end((err, res) => {\n    if (err) return done(err);\n  \n    expect(res).to.have.status(200);\n    expect(res.body).to.have.property('success', true);\n    expect(res.body).to.have.property('orders').to.be.an('array').to.have.lengthOf(2); // Modify the length accordingly\n  \n    findStub.restore();\n  \n    done();\n  });",
+              "err": {},
+              "uuid": "c658d5a9-0316-42fc-a239-08d471fc8e77",
+              "parentUUID": "39a57e96-d198-4564-8ff5-baa0224b1755",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c658d5a9-0316-42fc-a239-08d471fc8e77"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "6795ccee-acfc-4a3a-86c5-43713be036ec",
+          "title": "POST /deleteOrder",
+          "fullFile": "C:\\Users\\shanm\\Downloads\\TourVibes (1)\\TourVibes (1)\\TourVibes\\server\\test\\users.test.js",
+          "file": "\\test\\users.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should delete an order",
+              "fullTitle": "POST /deleteOrder should delete an order",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const orderId = 'order1'; // Replace with an actual order ID\n  \n// Stub Payment.findByIdAndRemove to simulate deleting an order\nconst findByIdAndRemoveStub = sinon.stub(Payment, 'findByIdAndRemove');\nfindByIdAndRemoveStub.callsFake((query, callback) => {\n  // Simulate order deletion\n  callback(null, { _id: orderId });\n});\n  \nchai.request(app)\n  .post('/api/users/deleteOrder')\n  .set('x-auth', 'user_token') // Set the user token\n  .send({ _id: orderId })\n  .end((err, res) => {\n    if (err) return done(err);\n  \n    expect(res).to.have.status(200);\n    expect(res.body).to.have.property('success', true);\n  \n    findByIdAndRemoveStub.restore();\n  \n    done();\n  });",
+              "err": {},
+              "uuid": "401ac1e1-0023-46d1-8d4d-9aa8ebd4733a",
+              "parentUUID": "6795ccee-acfc-4a3a-86c5-43713be036ec",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "401ac1e1-0023-46d1-8d4d-9aa8ebd4733a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

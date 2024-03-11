@@ -1,0 +1,6 @@
+table,thead,th,tr,td{
+    border: 1px solid black;
+    width: auto;
+    table-layout: fixed;
+    align-items: center;
+}
