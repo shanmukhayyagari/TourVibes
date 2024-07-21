@@ -1,3 +1,118 @@
+# TourVibes 
+
+TourVibes is a dynamic tour booking website developed to streamline the process of booking tours with role-based functionalities for admins and users. This project aims to enhance operational efficiency and provide a seamless user experience.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Overview
+
+TourVibes is designed to cater to both users and administrators with distinct functionalities, making the booking process efficient and user-friendly. The implementation of role-based access controls ensures that each user interacts with the platform according to their permissions.
+
+## Features
+
+- **Role-Based Access Control**: Different functionalities for admin and user roles.
+- **Efficient Booking System**: Streamlined tour booking process.
+- **Task Management**: Utilized Trello for enhanced team productivity.
+- **Robust Testing**: Achieved high system stability with manual and automated testing using Selenium.
+
+## Technologies
+
+- **Frontend**: ReactJS, CSS, Bootstrap
+- **Backend**: NodeJS
+- **Database**: MongoDB
+- **Task Management**: Trello
+- **Testing**: Selenium
+
+## Setup
+
+To get a local copy up and running, follow these simple steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/TourVibes.git
+   cd TourVibes
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+   Create a `.env` file in the root directory and add your MongoDB connection string and other necessary environment variables.
+
+   ```env
+   MONGO_URI=your_mongodb_connection_string
+   SECRET_KEY=your_secret_key
+   ```
+
+4. **Run the application:**
+   ```bash
+   npm start
+   ```
+
+5. **Open your browser:**
+   Navigate to `http://localhost:3000` to see the application in action.
+
+## Usage
+
+### User Role
+
+- **Browse Tours**: Users can view available tours.
+- **Book Tours**: Users can book tours and receive confirmations.
+
+### Admin Role
+
+- **Manage Tours**: Admins can add, edit, or delete tours.
+- **View Bookings**: Admins can view all bookings made by users.
+
+## Testing
+
+We implemented both manual and automated testing to ensure the stability and reliability of the system.
+
+- **Automated Testing**: Using Selenium for end-to-end testing.
+- **Manual Testing**: Conducted various test cases to cover different user scenarios.
+
+To run automated tests:
+
+```bash
+npm test
+```
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be, learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. **Fork the Project**
+2. **Create your Feature Branch (`git checkout -b feature/AmazingFeature`)**
+3. **Commit your Changes (`git commit -m 'Add some AmazingFeature'`)**
+4. **Push to the Branch (`git push origin feature/AmazingFeature`)**
+5. **Open a Pull Request**
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+- **Your Name** - [your-email@example.com](mailto:your-email@example.com)
+- **Project Link**: [https://github.com/your-username/TourVibes](https://github.com/your-username/TourVibes)
+
+---
+
+Feel free to adjust any section or add more details as needed!
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
